@@ -3,6 +3,23 @@ package converter.domain.json;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This object contains maps for getting data from rank.json file.
+ * All maps contains numbers 0-9 and translate for them.
+ * <p>
+ * For example:
+ * "1":"один" ,"2":"два"
+ * <p>
+ * Different maps needs for different divides:
+ * hundreds - "сотни",
+ * tens - "десятки",
+ * units - "единицы",
+ * thousandUnits -"единицы для тысяч",
+ * tensAndUnits - "от 10 до 19"
+ *
+ * @author Eduard
+ */
+
 public class Rank {
 
     private Map<String,String> hundreds = new HashMap<>();

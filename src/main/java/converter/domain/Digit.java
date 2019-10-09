@@ -1,7 +1,13 @@
 package converter.domain;
 
 import java.util.Objects;
-
+/**
+ * This class consist of hundred, ten and unit of one class number.
+ * <p>
+ * For example:
+ * number (345) -> Digit (hundred-3, ten-4, unit-5)
+ * @author Eduard
+ * */
 public class Digit {
 
     private String hundred;

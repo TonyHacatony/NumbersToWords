@@ -11,9 +11,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * This class read and parse excel file for DDT
+ * @author Eduard
+ * */
+
 public class ExcelReader {
 
-    List<TestData> parse(String name) throws Exception {
+    List<TestData> parseExcel(String name) throws Exception {
         List<TestData> result = new ArrayList<>();
         String file = this.getClass().getClassLoader().getResource(name).getFile();
         InputStream input = new FileInputStream(file);

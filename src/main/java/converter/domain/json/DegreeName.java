@@ -1,6 +1,15 @@
 package converter.domain.json;
 
-import java.util.Objects;
+/**
+ * @author Eduard
+ * This object contain object with different degrees of declination words which are calles name* and value
+ * who need just for count number of degrees. Postfix "-One", "-Two" and "-Five" said where will you first meet this
+ * name.
+ *
+ * For example:
+ * value:2, nameOne:"тысяча", nameTwo:"тысячи", nameFive"тысяч".
+ *
+ * */
 
 public class DegreeName {
 

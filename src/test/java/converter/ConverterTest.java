@@ -16,7 +16,7 @@ public class ConverterTest {
             List<TestData> list = new ArrayList<>();
 
             try {
-                list = new ExcelReader().parse("test.xlsx");
+                list = new ExcelReader().parseExcel("test.xlsx");
             }catch (Exception e){
                 Assert.fail("Фаил не найден");
             }

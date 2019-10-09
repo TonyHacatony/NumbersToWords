@@ -2,15 +2,23 @@ package converter.domain.json;
 
 import java.util.List;
 
-public class NumberJson {
+/**
+ * @author Eduard
+ * This object contains list with degrees.
+ *
+ * @see converter.domain.json.DegreeName;
+ *
+ * */
+
+public class NumberClass {
 
     private List<DegreeName> degrees;
 
-    public NumberJson(List<DegreeName> degrees) {
+    public NumberClass(List<DegreeName> degrees) {
         this.degrees = degrees;
     }
 
-    public NumberJson() {
+    public NumberClass() {
     }
 
     public List<DegreeName> getDegrees() {
@@ -23,7 +31,7 @@ public class NumberJson {
 
     @Override
     public String toString() {
-        return "NumberJson{" +
+        return "NumberClass{" +
                 "degrees=" + degrees +
                 '}';
     }
