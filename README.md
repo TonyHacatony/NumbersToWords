@@ -6,6 +6,4 @@ This modul have only one method "convert(String number)" where you need insert n
 
 All static files for transformation located in "resources" and have format ".json".
 
-For use DDT your need change directory and filename in "test.java.NumberConverter.ConverterTest". 
-Defaul directory and filename "C://Test.xlsx".
-
+For use DDT your need put you Excel file with name Test.xlsx format(1-row: number, 2-row: expected word) in "test/resourse".
