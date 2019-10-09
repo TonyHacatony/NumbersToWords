@@ -1,8 +1,8 @@
-package NumberConverter;
+package converter;
 
-import NumberConverter.domain.Digit;
-import NumberConverter.domain.Json.NumberJson;
-import NumberConverter.domain.Json.Rank;
+import converter.domain.Digit;
+import converter.domain.json.NumberJson;
+import converter.domain.json.Rank;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +16,18 @@ public class Converter {
     public String convert(String number){
         StringBuilder builder = new StringBuilder();
         digitsList.addAll(numberToList(number));
-        rank = new JsonReader().getJsonRanks();
-        numberClasses = new JsonReader().getJsonNumbers();
+
+        try {
+            rank = new JsonReader().getJsonRanks();
+            numberClasses = new JsonReader().getJsonNumbers();
+        }catch (Exception e){
+            System.out.println("В resources не были найдены файлы для преобразования чисел");
+            return "";
+        }
+
         currentClass = digitsList.size()-1;
+
+        if(currentClass==0 && digitsList.get(0).equals(new Digit("0","0","0"))) return "ноль";
 
         for(Digit element : digitsList){
             builder.append(
@@ -30,9 +39,10 @@ public class Converter {
                             element.getUnit()));
             builder.append(
                     units(
-                            element.getUnit(),
                             numberClasses.getDegrees().get(currentClass).getNameOne(),
-                            element.getTen()));
+                            element.getTen(),
+                            element.getUnit()));
+
             if(!element.getUnit().equals("0") ||
             !element.getTen().equals("0") ||
             !element.getHundred().equals("0"))
@@ -44,11 +54,11 @@ public class Converter {
 
         return builder.toString().replaceAll("\\s+"," ").trim();
     }
-    
-    private String units(String unit,String numberClass,String tens){
+
+    private String units(String currentClass, String ten, String unit){
         String result = "";
-        if(tens.equals("1")) return result;
-        if(numberClass.equals("тысяча")) {
+        if(ten.equals("1")) return result;
+        if(currentClass.equals("тысяча")) {
             result = rank.getThousandUnits().get(unit) + " ";
         }else{
             result = rank.getUnits().get(unit) + " ";
@@ -56,12 +66,12 @@ public class Converter {
         return result;
     }
 
-    private String tens(String tens,String unit){
+    private String tens(String ten,String unit){
         String result;
-        if(tens.equals("1")){
+        if(ten.equals("1")){
             result = rank.getTensAndUnits().get(unit) + " ";
         }else{
-            result = rank.getTens().get(tens) + " ";
+            result = rank.getTens().get(ten) + " ";
         }
         return result;
     }

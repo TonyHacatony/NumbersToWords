@@ -1,6 +1,6 @@
-package NumberConverter;
+package converter;
 
-import NumberConverter.domain.TestData;
+import converter.domain.TestData;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -10,11 +10,17 @@ import java.util.List;
 public class ConverterTest {
 
     @Test
-        public void convert(){
+        public void convert() {
             String actual;
             String expected;
+            List<TestData> list = new ArrayList<>();
 
-            List<TestData> list = new ArrayList<>(new ExcelReader().parse("C://Test.xlsx"));
+            try {
+                list = new ExcelReader().parse("test.xlsx");
+            }catch (Exception e){
+                Assert.fail("Фаил не найден");
+            }
+
             for(TestData element : list){
                 actual = new Converter().convert(element.getActual());
                 expected = element.getExpected();

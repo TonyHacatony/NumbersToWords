@@ -1,4 +1,4 @@
-package NumberConverter.domain.Json;
+package converter.domain.json;
 
 import java.util.HashMap;
 import java.util.Map;

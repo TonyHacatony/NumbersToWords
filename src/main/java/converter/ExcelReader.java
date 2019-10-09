@@ -1,7 +1,6 @@
-package NumberConverter;
+package converter;
 
-import NumberConverter.domain.TestData;
-import org.apache.poi.hssf.usermodel.*;
+import converter.domain.TestData;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -14,16 +13,11 @@ import java.util.List;
 
 public class ExcelReader {
 
-    public List<TestData> parse(String name) {
-
+    List<TestData> parse(String name) throws Exception {
         List<TestData> result = new ArrayList<>();
-        XSSFWorkbook workbook = new XSSFWorkbook();
-
-        try(InputStream input = new FileInputStream(name)){
-            workbook = new XSSFWorkbook(input);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String file = this.getClass().getClassLoader().getResource(name).getFile();
+        InputStream input = new FileInputStream(file);
+        XSSFWorkbook workbook = new XSSFWorkbook(input);
 
         Sheet sheet = workbook.getSheetAt(0);
         Iterator<Row> rows = sheet.iterator();

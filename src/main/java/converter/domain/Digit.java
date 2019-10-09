@@ -1,4 +1,4 @@
-package NumberConverter.domain;
+package converter.domain;
 
 import java.util.Objects;
 
